@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Função para exibir o menu
+exibir_menu() {
+    dialog --clear --backtitle "Menu Interativo" --title "Selecione uma opção" \
+        --menu "Escolha uma opção:" 12 50 5 \
+        "1" "Executar Script A" \
+        "2" "Executar Script B" \
+        "3" "Executar Script C" \
+        "4" "Sair" 2> /tmp/menu_input.txt
+}
+
+# Loop principal do menu
+while true; do
+    exibir_menu
+
+    # Lê a opção selecionada do arquivo de input
+    opcao=$(cat /tmp/menu_input.txt)
+
+    case $opcao in
+        1)
+            # Executar Script A
+            echo "Executando Script A..."
+            # Insira aqui o código para executar o Script A
+            # Exemplo: ./scriptA.sh
+            ;;
+        2)
+            # Executar Script B
+            echo "Executando Script B..."
+            # Insira aqui o código para executar o Script B
+            # Exemplo: ./scriptB.sh
+            ;;
+        3)
+            # Executar Script C
+            echo "Executando Script C..."
+            # Insira aqui o código para executar o Script C
+            # Exemplo: ./scriptC.sh
+            ;;
+        4)
+            # Opção de saída
+            echo "Encerrando o programa..."
+            break
+            ;;
+        *)
+            # Opção inválida
+            echo "Opção inválida. Tente novamente."
+            read -p "Pressione Enter para continuar..."
+            ;;
+    esac
+done
+
